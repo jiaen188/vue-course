@@ -1,6 +1,6 @@
 import Home from './../views/Home.vue'
 
-export default  [
+export default [
   {
     path: '/',
     name: 'home',
