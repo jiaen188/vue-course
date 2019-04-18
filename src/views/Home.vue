@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/img/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <em>{{food}}</em>
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转某一页</button>
     <button @click="handleClick('replace')">替换某一页</button>
+    <img alt="Vue logo" src="../assets/img/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
@@ -16,6 +17,12 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  props: {
+    food: {
+      type: String,
+      default: 'apple'
+    }
   },
   methods: {
     handleClick(type) {

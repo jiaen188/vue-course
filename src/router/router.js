@@ -5,11 +5,17 @@ export default [
     path: '/',
     name: 'home',
     alias: 'home_page',
-    component: Home
+    component: Home,
+    props: route => ({
+      food: route.query.food
+    })
   },
   {
     path: '/about',
     name: 'about',
+    props: {
+      food: 'banana'
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -18,6 +24,7 @@ export default [
   {
     path: '/argu/:name',
     name: 'argu',
+    props: true,
     component: () => import('@/views/argu.vue')
   },
   {
