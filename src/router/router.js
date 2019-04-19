@@ -8,7 +8,17 @@ export default [
     component: Home,
     props: route => ({
       food: route.query.food
-    })
+    }),
+    beforeEnter: (to, from, next) => {
+      // if (from.name === 'about') alert('is from about page')
+      // else alert('is from other page')
+      next()
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login.vue')
   },
   {
     path: '/about',

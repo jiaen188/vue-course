@@ -24,6 +24,16 @@ export default {
       default: 'apple'
     }
   },
+  beforeRouteLeave (to, from, next) {
+    const leave = confirm('你确定要离开么？')
+    if (leave) next()
+    else next(false)
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      console.log(vm)
+    })
+  },
   methods: {
     handleClick(type) {
       if (type === 'back') this.$router.back()
