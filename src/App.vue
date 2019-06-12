@@ -4,13 +4,30 @@
       <router-link :to="{ name: 'home' }">Home</router-link> |
       <router-link :to="{ name: 'about' }">About</router-link>
     </div>
-    <transition-group name="router">
+    <transition-group :name="routerTransition">
       <router-view key="default" />
       <router-view key="email" name="email"/>
       <router-view key="tel" name="tel" />
     </transition-group>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      routerTransition: ''
+    }
+  },
+  watch: {
+    '$route' (to) {
+      console.log('to', to)
+      // 根据url上的参数，动态给某个路由添加动画效果
+      to.query && to.query.transitionName && (this.routerTransition = to.query.transitionName)
+    }
+  }
+}
+</script>
 
 <style lang="less">
 .router-enter {
