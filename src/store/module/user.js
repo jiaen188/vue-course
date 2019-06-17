@@ -9,7 +9,9 @@ const getters = {
 }
 
 const mutations = {
-  //
+  SET_UESR_NAME (state, payload) {
+    state.userName = payload
+  }
 }
 
 const actions = {

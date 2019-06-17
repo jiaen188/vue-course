@@ -1,3 +1,10 @@
-export default {
+import Vue from 'vue'
 
+export default {
+  SET_APP_NAME (state, payload) {
+    state.appName = payload
+  },
+  SET_APP_VERSION (state, payload) {
+    Vue.set(state, 'appVersion', 'v2.0')
+  }
 }

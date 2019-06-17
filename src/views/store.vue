@@ -5,13 +5,16 @@
     <a-show :content="inputValue" />
     <p>appName: {{appName}} , appNameWithVersion: {{appNameWithVersion}}</p>
     <p>userName: {{userName}}, firstLetter: {{firstLetter}}</p>
+    <button @click="handleChangeAppName">修改appName</button>
+    <p>appVersion: {{appVersion}}</p>
+    <button @click="handleChangeUserName">修改userName</button>
    </div>
 </template>
 
 <script>
 import AInput from '_c/AInput'
 import AShow from '_c/AShow'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'store',
@@ -29,7 +32,8 @@ export default {
       userName: state => state.userName
     }),
     ...mapState([
-      'appName'
+      'appName',
+      'appVersion'
     ]),
     // ...mapState({
     //   appName: state => state.appName,
@@ -49,6 +53,22 @@ export default {
     },
     inputValueLastLetter () {
       return this.inputValue.substr(-1, 1)
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'SET_APP_NAME',
+      'SET_APP_VERSION'
+    ]),
+    ...mapMutations('user', ['SET_UESR_NAME']),
+    handleChangeAppName () {
+      // this.$store.commit('SET_APP_NAME', 'newAppName')
+      // this.$store.commit('SET_APP_VERSION')
+      this.SET_APP_NAME('newAppName')
+      this.SET_APP_VERSION()
+    },
+    handleChangeUserName () {
+      this.SET_UESR_NAME('newUserName')
     }
   }
 }
