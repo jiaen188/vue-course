@@ -8,6 +8,8 @@
     <button @click="handleChangeAppName">修改appName</button>
     <p>appVersion: {{appVersion}}</p>
     <button @click="handleChangeUserName">修改userName</button>
+    <button @click="handleRegisterModule">动态注册模块</button>
+    <p v-for="(item, index) in todolist" :key="index">{{item}}</p>
    </div>
 </template>
 
@@ -29,12 +31,16 @@ export default {
   },
   computed: {
     ...mapState('user', {
-      userName: state => state.userName
+      userName: state => state.userName,
+      todolist: state => state.todo ? state.todo.todolist : []
     }),
     ...mapState([
       'appName',
       'appVersion'
     ]),
+    ...mapState({
+      // todolist: state => state.todo ? state.todo.todolist : []
+    }),
     // ...mapState({
     //   appName: state => state.appName,
     //   userName: state => state.user.userName
@@ -71,6 +77,24 @@ export default {
     },
     handleChangeUserName () {
       this.SET_UESR_NAME('newUserName')
+    },
+    handleRegisterModule () {
+      // this.$store.registerModule('todo', {
+      //   state: {
+      //     todolist: [
+      //       '学习',
+      //       'coding'
+      //     ]
+      //   }
+      // })
+      this.$store.registerModule(['user', 'todo'], {
+        state: {
+          todolist: [
+            'user todolist',
+            'coding'
+          ]
+        }
+      })
     }
   }
 }
