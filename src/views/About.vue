@@ -16,7 +16,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .about {
   color: #000;

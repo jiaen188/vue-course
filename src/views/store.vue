@@ -14,7 +14,7 @@
 <script>
 import AInput from '_c/AInput'
 import AShow from '_c/AShow'
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'store',
@@ -61,11 +61,13 @@ export default {
       'SET_APP_VERSION'
     ]),
     ...mapMutations('user', ['SET_UESR_NAME']),
+    ...mapActions(['updateAppName']),
     handleChangeAppName () {
       // this.$store.commit('SET_APP_NAME', 'newAppName')
       // this.$store.commit('SET_APP_VERSION')
-      this.SET_APP_NAME('newAppName')
-      this.SET_APP_VERSION()
+      /*  this.SET_APP_NAME('newAppName')
+      this.SET_APP_VERSION() */
+      this.updateAppName()
     },
     handleChangeUserName () {
       this.SET_UESR_NAME('newUserName')

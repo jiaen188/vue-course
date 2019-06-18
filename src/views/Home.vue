@@ -35,14 +35,14 @@ export default {
     })
   },
   methods: {
-    handleClick(type) {
+    handleClick (type) {
       if (type === 'back') this.$router.back()
       else if (type === 'push') {
         this.$router.push({
           name: 'argu',
           params: {
             name: 'jiaen'
-          },
+          }
           // query: {
           //   name: 'jiaen'
           // }
