@@ -1,6 +1,7 @@
 <template>
   <div>
-    <a-input v-model="inputValue" />
+    <!-- <a-input v-model="inputValue" /> -->
+    <a-input :value="stateValue" @input="handleStateValueChange" />
     <p>{{inputValue}} -> lastLetter {{inputValueLastLetter}}</p>
     <a-show :content="inputValue" />
     <p>appName: {{appName}} , appNameWithVersion: {{appNameWithVersion}}</p>
@@ -36,7 +37,8 @@ export default {
     }),
     ...mapState([
       'appName',
-      'appVersion'
+      'appVersion',
+      'stateValue'
     ]),
     ...mapState({
       // todolist: state => state.todo ? state.todo.todolist : []
@@ -67,6 +69,7 @@ export default {
       'SET_APP_VERSION'
     ]),
     ...mapMutations('user', ['SET_UESR_NAME']),
+    ...mapMutations(['SET_STATE_VALUE']),
     ...mapActions(['updateAppName']),
     handleChangeAppName () {
       // this.$store.commit('SET_APP_NAME', 'newAppName')
@@ -95,6 +98,10 @@ export default {
           ]
         }
       })
+    },
+    handleStateValueChange (val) {
+      this.SET_STATE_VALUE(val)
+      console.log('stateValue', this.stateValue)
     }
   }
 }

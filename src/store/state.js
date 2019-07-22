@@ -1,3 +1,4 @@
 export default {
-  appName: 'admin'
+  appName: 'admin',
+  stateValue: 'abc'
 }
