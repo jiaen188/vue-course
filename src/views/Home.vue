@@ -13,7 +13,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import axios from 'axios'
+import { getUserinfo } from '@/api/user'
 
 export default {
   name: 'home',
@@ -57,7 +57,7 @@ export default {
     },
     getInfo () {
       console.log('请求数据')
-      axios.post('/index/getUserInfo', { userId: 21 }).then(res => {
+      getUserinfo({ userId: 24 }).then(res => {
         console.log('res', res)
       })
     }
