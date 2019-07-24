@@ -4,6 +4,7 @@
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转某一页</button>
     <button @click="handleClick('replace')">替换某一页</button>
+    <button @click="getInfo">请求数据</button>
     <img alt="Vue logo" src="../assets/img/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -12,6 +13,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
   name: 'home',
@@ -52,6 +54,12 @@ export default {
           name: 'parent'
         })
       }
+    },
+    getInfo () {
+      console.log('请求数据')
+      axios.post('/index/getUserInfo', { userId: 21 }).then(res => {
+        console.log('res', res)
+      })
     }
   }
 }
