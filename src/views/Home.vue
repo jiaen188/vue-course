@@ -4,7 +4,8 @@
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转某一页</button>
     <button @click="handleClick('replace')">替换某一页</button>
-    <button @click="getInfo">请求数据</button>
+    <button @click="getInfo" :style="{ background: bgColor}">请求数据</button>
+    <img :src="url">
     <img alt="Vue logo" src="../assets/img/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -19,6 +20,12 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  data () {
+    return {
+      url: '',
+      bgColor: '',
+    }
   },
   props: {
     food: {
@@ -59,6 +66,15 @@ export default {
       console.log('请求数据')
       getUserinfo({ userId: 24 }).then(res => {
         console.log('res', res)
+        if (Array.isArray(res.data)) {
+          this.url = res.data[0].img
+          this.bgColor = res.data[0].color
+          console.log('cname', res.data[0].cname)
+        } else {
+          this.url = res.data.img
+          this.bgColor = res.data.color
+          console.log('cname', res.data.cname, res.data)
+        }
       })
     }
   }
