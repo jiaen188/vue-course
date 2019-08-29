@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li v-for="(item, index) in list" :key="index">
+    <li @mousemove.prevent="handleMove" v-for="(item, index) in list" :key="index">
       <span v-if="!render">{{ item.name }}</span>
-      <render-dom v-else :render-func="render" :name="item.name"></render-dom>
+      <render-dom v-else :render-func="render" :number="item.number"></render-dom>
     </li>
   </ul>
 </template>
@@ -27,6 +27,11 @@ export default {
   },
   data() {
     return {
+    }
+  },
+  methods: {
+    handleMove() {
+      // 取消文字的选中效果
     }
   }
 }

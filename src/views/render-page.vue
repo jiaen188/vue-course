@@ -9,14 +9,15 @@
 
 <script>
 import List from '_c/list'
+import CountTo from '_c/count-to'
 
 export default {
   name: '',
   data() {
     return {
       list: [
-        { name: 'jiaen' },
-        { name: '18' }
+        { name: 'jiaen', number: 100 },
+        { name: '18', number: 18 }
       ]
     }
   },
@@ -24,15 +25,22 @@ export default {
     List
   },
   methods: {
-    handleClick() {
-      console.log('click')
+    handleClick(e) {
+      console.log('click', e)
     },
-    renderFunc(h, name) {
-      return h('i', {
-        style: {
-          color: 'pink'
-        }
-      }, name)
+    renderFunc(h, number) {
+      // return h('i', {
+      //   style: {
+      //     color: 'pink'
+      //   }
+      // }, name)
+      return (
+        // <i on-click={this.handleClick} style={{color: red}}>{name}</i>
+        <CountTo nativeOn-click={this.handleClick} on-on-animation-end={this.handleEnd} endVal={number} style={{ color: 'red' }}></CountTo>
+      )
+    },
+    handleEnd() {
+      console.log('end!')
     }
   }
 }
