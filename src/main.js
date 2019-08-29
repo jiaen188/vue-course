@@ -1,5 +1,5 @@
 import Vue from 'vue'
-// import App from './App.vue'
+import App from './App.vue'
 // import CountTo from './components/count-to'
 import router from './router'
 import store from './store'
@@ -26,14 +26,14 @@ const getLiEleArr = (h) => {
 new Vue({
   router,
   store,
-  // render: h => h(App)
-  render: h => h('div', [
-    h('ul', {
-      on: {
-        click: handleClick
-      }
-    }, getLiEleArr(h))
-  ])
+  render: h => h(App)
+  // render: h => h('div', [
+  //   h('ul', {
+  //     on: {
+  //       click: handleClick
+  //     }
+  //   }, getLiEleArr(h))
+  // ])
   /* render: h => {
     return h(CountTo, {
       'class': [],
