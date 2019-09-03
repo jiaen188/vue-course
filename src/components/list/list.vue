@@ -1,8 +1,9 @@
 <template>
   <ul>
     <li @mousemove.prevent="handleMove" v-for="(item, index) in list" :key="index">
-      <span v-if="!render">{{ item.name }}</span>
-      <render-dom v-else :render-func="render" :number="item.number"></render-dom>
+      <!-- <span v-if="!render">{{ item.name }}</span> -->
+      <!-- <render-dom v-else :render-func="render" :number="item.number"></render-dom> -->
+      <slot :number="item.number"></slot>
     </li>
   </ul>
 </template>

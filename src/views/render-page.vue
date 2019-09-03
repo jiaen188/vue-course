@@ -3,7 +3,10 @@
     <!-- <ul>
       <li @click="handleClick" v-for="(item, index) in list" :key="`list_item_${index}`">{{ item.name }}</li>
     </ul> -->
-    <List :list="list" :render="renderFunc"></List>
+    <!-- <List :list="list" :render="renderFunc"></List> -->
+    <List :list="list">
+      <count-to slot-scope="count" :end-val="count.number"></count-to>
+    </List>
   </div>
 </template>
 
@@ -22,7 +25,8 @@ export default {
     }
   },
   components: {
-    List
+    List,
+    CountTo
   },
   methods: {
     handleClick(e) {
