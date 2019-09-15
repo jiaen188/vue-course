@@ -3,7 +3,7 @@ var router = express.Router();
 const jwt = require('jsonwebtoken')
 
 const getPasswordByName = (name) => {
-  return { password: '123' }
+  return { password: '123' } // 默认密码是 123
 }
 
 router.post('/getUserInfo', function(req, res, next) {

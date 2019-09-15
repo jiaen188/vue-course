@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { baseURL } from '@/config'
+import { getToken } from '@/lib/util'
 
 class HttpRequest {
   constructor (baseUrl = baseURL) {
@@ -23,6 +24,7 @@ class HttpRequest {
       // 添加全局的loading...
       if (!Object.keys(this.queue).length) console.log('Spin.show()')// 开始请求
       this.queue[url] = true
+      config.headers['Authorization'] = getToken()
       return config
     }, error => {
       return Promise.reject(error)
@@ -30,8 +32,8 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       delete this.queue[url]
       console.log('instance.interceptors.response res', res)
-      const { data, status } = res
-      return { data, status }
+      const { data } = res
+      return data
     }, error => {
       delete this.queue[url]
       return Promise.reject(error)
