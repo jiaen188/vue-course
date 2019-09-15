@@ -6,6 +6,7 @@
     <button @click="handleClick('replace')">替换某一页</button>
     <button @click="getInfo" :style="{ background: bgColor}">请求数据</button>
     <img :src="url">
+    <button @click="handleLogout">退出登录</button>
     <img alt="Vue logo" src="../assets/img/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -15,6 +16,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import { getUserinfo } from '@/api/user'
+import { setToken } from '@/lib/util'
 
 export default {
   name: 'home',
@@ -24,7 +26,7 @@ export default {
   data () {
     return {
       url: '',
-      bgColor: '',
+      bgColor: ''
     }
   },
   props: {
@@ -76,6 +78,10 @@ export default {
           console.log('cname', res.data.cname, res.data)
         }
       })
+    },
+    handleLogout() {
+      setToken('')
+      this.$router.push({ name: 'login' })
     }
   }
 }
