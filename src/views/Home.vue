@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <em>{{food}}</em>
+    <!-- <em>{{food}}</em>
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转某一页</button>
     <button @click="handleClick('replace')">替换某一页</button>
@@ -8,7 +8,20 @@
     <img :src="url">
     <button @click="handleLogout">退出登录</button>
     <img alt="Vue logo" src="../assets/img/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <Row>
+      <i-col></i-col>
+    </Row>
+    <Row :gutter="10">
+      <i-col span="12"></i-col>
+      <i-col span="12"></i-col>
+    </Row>
+    <Row :gutter="10" class="blue">
+      <i-col :md="6" :sm="12"></i-col>
+      <i-col :md="6" :sm="12"></i-col>
+      <i-col :md="6" :sm="12"></i-col>
+      <i-col :md="6" :sm="12"></i-col>
+    </Row>
   </div>
 </template>
 
@@ -86,3 +99,20 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+.home {
+  .ivu-col {
+    height: 50px;
+    margin-top: 10px;
+    background: pink;
+    background-clip: content-box;
+  }
+  .blue {
+    .ivu-col {
+      background: blue;
+      background-clip: content-box;
+    }
+  }
+}
+</style>

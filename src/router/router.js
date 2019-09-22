@@ -1,4 +1,4 @@
-// import Home from './../views/Home.vue'
+import Home from './../views/Home.vue'
 import Layout from '@/views/layout'
 
 export default [
@@ -14,7 +14,13 @@ export default [
       // if (from.name === 'about') alert('is from about page')
       // else alert('is from other page')
       next()
-    }
+    },
+    children: [
+      {
+        path: 'home',
+        component: Home
+      }
+    ]
   },
   {
     path: '/login',

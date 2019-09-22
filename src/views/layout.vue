@@ -6,7 +6,11 @@
         <Header class="header-wrapper">
           <Icon :class="triggerClasses" @click.native="handleCollasped" type="md-menu" :size="32" />
         </Header>
-        <Content></Content>
+        <Content class="content-con">
+          <Card shadow class="page-card">
+            <router-view />
+          </Card>
+        </Content>
       </Layout>
     </Layout>
   </div>
@@ -50,6 +54,12 @@ export default {
         transition: transform .3s ease;
       }
     }
+  }
+  .content-con {
+    padding: 10px;
+  }
+  .page-card {
+    min-height: ~"calc(100vh - 84px)"
   }
 }
 </style>
